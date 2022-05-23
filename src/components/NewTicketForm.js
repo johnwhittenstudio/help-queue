@@ -24,7 +24,7 @@ function NewTicketForm(){
         <textarea
           name='issue'
           placeholder='Describe your issue.' />
-        <button type='submit'>H</button>
+        <button type='submit'>Help!</button>
       </form>
     </React.Fragment>
   );
