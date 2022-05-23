@@ -1,4 +1,4 @@
-# <p align="center"> 🐾 **Help Queue** 🐾 </p>
+# <p align="center"> 🔎 **Help Queue** 🔍 </p>
 
 _May 23, 2022_
 
