@@ -16,3 +16,9 @@ code {
   border-radius: 10px;
   background-color:rgb(234, 169, 5)
 }
+
+#button-help {
+  border-radius: 10px;
+  background-color:rgb(234, 5, 5);
+  color: white;
+}
