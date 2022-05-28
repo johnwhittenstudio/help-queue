@@ -21,7 +21,7 @@ This is a follow-along exercise for Epidocodus to practice making a React websit
 
 ## Website Components Planning
 
-<img src="./src/img/help_components.jpg">
+<img src="./src/img/diagram_CRUD.jpg">
 
 ## Technologies Used <a id="technologies"></a>
 
