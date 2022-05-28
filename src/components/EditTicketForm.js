@@ -5,14 +5,14 @@ import PropTypes from "prop-types";
 function EditTicketForm (props) {
   const { ticket } = props;
 
-  function handleEditTicketFormSubmissions(event) {
+  function handleEditTicketFormSubmission(event) {
     event.preventDefault();
-    PerformancePaintTiming.onEditTicket({names: event.target.names.value, locations: event.target.location.value, issue: event.target.issue.value, id: ticket.id});
+    props.onEditTicket({names: event.target.names.value, location: event.target.location.value, issue: event.target.issue.value, id: ticket.id});
   }
-
+  
   return (
     <React.Fragment>
-      <ReusableForm
+      <ReusableForm 
         formSubmissionHandler={handleEditTicketFormSubmission}
         buttonText="Update Ticket" />
     </React.Fragment>
@@ -20,7 +20,6 @@ function EditTicketForm (props) {
 }
 
 EditTicketForm.propTypes = {
-  ticket: PropTypes.object,
   onEditTicket: PropTypes.func
 };
 

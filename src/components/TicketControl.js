@@ -10,7 +10,7 @@ class TicketControl extends React.Component {
     super(props);
     this.state = {
       formVisibleOnPage: false,
-      masterTicketList: [],
+      mainTicketList: [],
       selectedTicket: null,
       editing: false
     };
@@ -18,9 +18,9 @@ class TicketControl extends React.Component {
 
   // CRUD: Deleting Individual Ticket
   handleDeletingTicket = (id) => {
-    const newMasterTicketList = this.state.masterTicketList.filter(ticket => ticket.id !== id);
+    const newMainTicketList = this.state.mainTicketList.filter(ticket => ticket.id !== id);
     this.setState({
-      masterTicketList: newMasterTicketList,
+      mainTicketList: newMainTicketList,
       selectedTicket: null
     });
   }
@@ -44,14 +44,14 @@ class TicketControl extends React.Component {
 
   // CRUD: Reading Individual Ticket Detail
   handleChangingSelectedTicket = (id) => {
-    const selectedTicket = this.state.masterTicketList.filter(ticket => ticket.id === id)[0];
+    const selectedTicket = this.state.mainTicketList.filter(ticket => ticket.id === id)[0];
     this.setState({selectedTicket: selectedTicket});
   }
 
   // CRUD: Creating a New Ticket
   handleAddingNewTicketToList = (newTicket) => {
-    const newMasterTicketList = this.state.masterTicketList.concat(newTicket);
-    this.setState({masterTicketList: newMasterTicketList,
+    const newMainTicketList = this.state.mainTicketList.concat(newTicket);
+    this.setState({mainTicketList: newMainTicketList,
                   formVisibleOnPage: false });
   }
 
@@ -90,7 +90,7 @@ class TicketControl extends React.Component {
       buttonText = "Return to Ticket List";
 
     } else {
-      currentlyVisibleState = <TicketList ticketList={this.state.masterTicketList} onTicketSelection={this.handleChangingSelectedTicket}/>;
+      currentlyVisibleState = <TicketList ticketList={this.state.mainTicketList} onTicketSelection={this.handleChangingSelectedTicket}/>;
       buttonText = "Add Ticket";
     };
 
