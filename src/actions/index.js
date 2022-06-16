@@ -1,18 +1,18 @@
-import { constants } from "fsevents";
+import * as c from './../actions/ActionTypes';
 
 export const deleteTicket = id => ({
-  type: 'DELETE_TICKET',
+  type: c.DELETE_TICKET,
   id
 });
 
 export const toggleForm = () => ({
-  type: 'TOGGLE_FORM'
+  type: c.TOGGLE_FORM
 });
 
 export const addTicket = (ticket) => {
   const { names, location, issue, id, formattedWaitTime, timeOpen } = ticket;
   return {
-    type: constants.ADD_TICKET,
+    type: c.ADD_TICKET,
     names: names,
     location: location,
     issue: issue,
@@ -23,7 +23,7 @@ export const addTicket = (ticket) => {
 }
 
 export const updateTime = (id, formattedWaitTime) => ({
-  type: constants.UPDATE_TIME,
+  type: c.UPDATE_TIME,
   id: id,
   formattedWaitTime: formattedWaitTime
 });

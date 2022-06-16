@@ -3,7 +3,6 @@ import NewTicketForm from './NewTicketForm';
 import TicketList from './TicketList';
 import EditTicketForm from './EditTicketForm';
 import TicketDetail from './TicketDetail';
-import { v4 } from 'uuid';
 import { connect } from 'react-redux';
 import PropTypes from "prop-types";
 import * as a from './../actions';
@@ -21,6 +20,7 @@ class TicketControl extends React.Component {
       editing: false
     };
   }
+
   componentDidMount() {
     this.waitTimeUpdateTimer = setInterval(() =>
       this.updateTicketElapsedWaitTime(),
@@ -28,20 +28,24 @@ class TicketControl extends React.Component {
     );
   }
 
-    // We won't be using this method for our help queue update - but it's important to see how it works.
-    componentDidUpdate() {
-      console.log("component updated!");
-    }
-  
-    componentWillUnmount(){
-      console.log("component unmounted!");
-      clearInterval(this.waitTimeUpdateTimer);
-    }
-  
-    updateTicketElapsedWaitTime = () => {
-      console.log("tick");
-    }
+  // Will not be using
+  componentDidUpdate() {
+    console.log("component updated!");
+  }
 
+  componentWillUnmount(){
+    console.log("component unmounted!");
+    clearInterval(this.waitTimeUpdateTimer);
+  }
+
+  updateTicketElapsedWaitTime = () => {
+    const { dispatch } = this.props;
+    Object.values(this.props.mainTicketList).forEach(ticket => {
+      const newFormattedWaitTime = ticket.timeOpen.fromNow(true);
+      const action = a.updateTime(ticket.id, newFormattedWaitTime);
+      dispatch(action);
+    });
+  }
 // Important to use arrow notation so that this is automatically bound to its lexical scope, which is an instance of the class itself.
 handleClick = () => {
   if (this.state.selectedTicket != null) {
@@ -75,7 +79,6 @@ handleAddingNewTicketToList = (newTicket) => {
     dispatch(action);
     this.setState({selectedTicket: null});
   }
-
   handleEditClick = () => {
     console.log("handleEditClick reached!");
     this.setState({editing: true});
@@ -127,7 +130,7 @@ TicketControl.propTypes = {
   mainTicketList: PropTypes.object,
   formVisibleOnPage: PropTypes.bool
 };
-
+// state comes from our friend Redux
 const mapStateToProps = state => {
   return {
     mainTicketList: state.mainTicketList,
