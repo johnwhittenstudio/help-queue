@@ -1,6 +1,20 @@
-import ticketListReducer from '../../reducers/ticket-list-reducer';
+// import { DateTime } from "luxon";
+import ticketListReducer from "../../reducers/ticket-list-reducer";
+// import * as actions from "./../../actions";
+import Moment from 'moment';
+import * as constants from "./../../actions/ActionTypes"
 
 describe('ticketListReducer', () => {
+  
+  let action;
+  const ticketData = {
+    names: 'Ryan & Aimen',
+    location: '4b',
+    issue: 'Redux action is not working correctly.',
+    timeOpen: 0,
+    id: 1
+  };
+
   const currentState = {
     1: {names: 'Ryan & Aimen',
     location: '4b',
@@ -11,14 +25,7 @@ describe('ticketListReducer', () => {
     issue: 'Reducer has side effects.',
     id: 2 }
   }
-  
-  let action;
-  const ticketData = {
-    names: 'Ryan & Aimen',
-    location: '4b',
-    issue: 'Redux action is not working correctly.',
-    id: 1
-  };
+
   test('Should return default state if there is no action type passed into the reducer', () => {
     expect(ticketListReducer({}, { type: null })).toEqual({});
   });
@@ -55,4 +62,47 @@ describe('ticketListReducer', () => {
         id: 2 }
     });
   });
+
+  test("Should add a formatted wait time to ticket entry", () => {
+    const { names, location, issue, timeOpen, id } = ticketData;
+    action = {
+      type: constants.UPDATE_TIME,
+      formattedWaitTime: "4 minutes",
+      id: id
+    }
+    expect(ticketListReducer({ [id] : ticketData }, action)).toEqual({
+      [id] : {
+        names: names,
+        location: location,
+        issue: issue,
+        timeOpen: timeOpen,
+        id: id,
+        formattedWaitTime: '4 minutes'
+      }
+    });
+  });
+
+  test('should successfully add a ticket to the ticket list that includes Moment-formatted wait times', () => {
+    const { names, location, issue, timeOpen, id } = ticketData;
+    action = {
+      type: constants.ADD_TICKET,
+      names: names,
+      location: location,
+      issue: issue,
+      timeOpen: timeOpen,
+      id: id,
+      formattedWaitTime: new Moment().fromNow(true)
+    };
+    expect(ticketListReducer({}, action)).toEqual({
+      [id] : {
+        names: names,
+        location: location,
+        issue: issue,
+        timeOpen: timeOpen,
+        id: id,
+        formattedWaitTime: 'a few seconds'
+      }
+    });
+  });
+
 });

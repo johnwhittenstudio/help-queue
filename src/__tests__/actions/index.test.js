@@ -1,3 +1,4 @@
+import { constants } from 'fsevents';
 import * as actions from './../../actions';
 
 describe('help queue actions', () => {
@@ -24,5 +25,25 @@ describe('help queue actions', () => {
     });
   });
 
+  it('updateTime should create UPDATE_TIME action', () => {
+    expect(actions.updateTime(1, "A few seconds")).toEqual({
+      type: constants.UPDATE_TIME,
+      id: 1,
+      formattedWaitTime: "A few seconds"
+    });
+  });
+
+  it('addTicket should create ADD_TICKET action', () => {
+    expect(actions.addTicket({names: 'Jo and Jasmine', location: '3E', issue: 'Redux not working!', timeOpen: 0,
+    formattedWaitTime: "A few seconds", id: 1})).toEqual({
+      type: constants.ADD_TICKET,
+      names: 'Jo and Jasmine',
+      location: '3E',
+      issue: 'Redux not working!',
+      timeOpen: 0,
+      formattedWaitTime: "A few seconds",
+      id: 1
+    });
+  });
 
 });

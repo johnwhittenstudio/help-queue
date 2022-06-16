@@ -1,3 +1,5 @@
+import { constants } from "fsevents";
+
 export const deleteTicket = id => ({
   type: 'DELETE_TICKET',
   id
@@ -8,12 +10,20 @@ export const toggleForm = () => ({
 });
 
 export const addTicket = (ticket) => {
-  const { names, location, issue, id } = ticket;
+  const { names, location, issue, id, formattedWaitTime, timeOpen } = ticket;
   return {
-    type: 'ADD_TICKET',
+    type: constants.ADD_TICKET,
     names: names,
     location: location,
     issue: issue,
     id: id
+    formattedWaitTime,
+    timeOpen: timeOpen
   }
 }
+
+export const updateTime = (id, formattedWaitTime) => ({
+  type: constants.UPDATE_TIME,
+  id: id,
+  formattedWaitTime: formattedWaitTime
+});
