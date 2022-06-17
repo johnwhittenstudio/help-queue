@@ -9,14 +9,20 @@ function ReusableForm(props) {
           type='text'
           name='names'
           placeholder='Pair Names' />
+        <br/>
+        <br/>
         <input
           type='text'
           name='location'
           placeholder='Location' />
+        <br/>
+        <br/>
         <textarea
           name='issue'
           placeholder='Describe your issue.' />
-        <button type='submit'>{props.buttonText}</button>
+        <br/>
+        <br/>
+        <button className="btn shadow mr-2 updateBtn btn-outline-secondary" type='submit'>{props.buttonText}</button>
       </form>
     </React.Fragment>
   );

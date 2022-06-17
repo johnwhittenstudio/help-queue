@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Header";
 import TicketControl from "./TicketControl";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 //Under the hood React is actually using a method called React.createElement() to create the HTML elements
 // To return multiple elements, the code in a function compelent's return statement must be wrapped in a single JSX element. That will typically be a <div> or <React.Fragment>
@@ -8,8 +9,14 @@ import TicketControl from "./TicketControl";
 function App(){
   return ( 
     <React.Fragment>
-      <Header />
-      <TicketControl />
+      <div className="text-center" style={{backgroundColor: 'lightblue'}}>
+        <Header />
+        </div>
+        <div className="container mb-5">
+          <div className="text-center">
+        <TicketControl />
+        </div>
+      </div>
     </React.Fragment>
   );
 }
