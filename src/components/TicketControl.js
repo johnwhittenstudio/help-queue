@@ -120,6 +120,7 @@ handleAddingNewTicketToList = (newTicket) => {
     return (
       <React.Fragment>
         {currentlyVisibleState}
+        <hr id="cardhrlow" />
         <button className="btn shadow deleteBtn btn-outline-secondary" onClick = {this.handleClick}>{buttonText}</button>
       </React.Fragment>
     );
