@@ -9,11 +9,11 @@ function Ticket(props){
       {/* Use arrow function so that expression isn't evaluated immidately */}
       <div onClick = {() => props.whenTicketClicked(props.id)}>
         { /* We add a div with an onClick function. Don't forget to close out the div below! */}
-        <h3>{props.names}</h3>
-        <h5>{props.location}</h5>
-        <p><em>{props.issue}</em></p>
+        <h5>Names: <strong>{props.names}</strong></h5>
+        <h5>Location: <strong>{props.location}</strong></h5>
+        <p>Issue: <strong><em>{props.issue}</em></strong></p>
         <hr id="cardhr" />
-        <p><em>{props.formattedWaitTime}</em></p>
+        <p><strong><em>{props.formattedWaitTime}</em></strong> since ticket created</p>
       </div>
     </React.Fragment>
   );

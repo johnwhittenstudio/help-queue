@@ -19,7 +19,7 @@ function TicketDetail(props){
           <div className="card-footer justify-content-center" style={{backgroundColor: "white"}}>
           <button onClick={ props.onClickingEdit }className="btn shadow mr-2 updateBtn btn-outline-secondary">Update Ticket</button>
           <button onClick={()=> onClickingDelete(ticket.id) }className="btn shadow mr-2 updateBtn btn-outline-secondary">Close Ticket</button>
-      <hr/>
+      {/* <hr/> */}
       </div>
     </div>
     </React.Fragment>

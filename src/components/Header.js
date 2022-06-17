@@ -10,6 +10,7 @@ function Header(props){
       <center>
       <h1 id="header"><img src={ticketsImage} style={headerImageStyle} alt="single ticket" />&nbsp;<strong>Help Queue</strong>&nbsp;<img src={ticketsImage} style={headerImageStyle} alt="single ticket" /></h1>
       </center>
+      {/* <hr id="cardhr" /> */}
       <br/>
     </React.Fragment>
   );
