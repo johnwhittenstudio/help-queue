@@ -3,7 +3,7 @@ import ticketsImage from "./../img/ticket.png";
 
 function Header(props){
   const headerImageStyle = {
-    width: "150px"
+    width: "100px"
   }
   return (
     <React.Fragment>
